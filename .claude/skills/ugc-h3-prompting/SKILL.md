@@ -5,7 +5,7 @@ description: วิธีทำ UGC AI video แบบนั่งพูดห�
 
 # UGC × MiniMax H3 — การเขียนบท/shot/prompt
 
-ใช้คู่กับ `ugc-render-ops` (สั่งเรนเดอร์) และ `docs/dance_pose_copy.md` (แม่แบบคลิปเต้น). รูปตัวละคร/ฉากหลังเป็นของผู้ใช้เอง ไม่อยู่ในรีโปนี้. ถ้าทำหลายโปรเจกต์ อย่าผสมตัวละคร/รูปข้ามโปรเจกต์
+ใช้คู่กับ `format_bibles/dance_pose_copy.md` (แม่แบบคลิปเต้น) และ `docs/USE_WORKFLOW.md` (วิธีเอา prompt ไปวางใน workflow). รูปตัวละคร/ฉากหลังเป็นของผู้ใช้เอง ไม่อยู่ในรีโปนี้. ถ้าทำหลายโปรเจกต์ อย่าผสมตัวละคร/รูปข้ามโปรเจกต์
 
 ## 1. งานทีละเรื่อง (ลำดับ)
 1. อ่านบท + ข้อมูลตัวละคร (สรรพนาม คำลงท้าย น้ำเสียง ตามที่ผู้ใช้กำหนด)
@@ -14,10 +14,10 @@ description: วิธีทำ UGC AI video แบบนั่งพูดห�
 4. **แบ่ง segment ≤ 15 วินาที** แบ่งที่รอยต่อประโยค ไม่ตัดกลางประโยค (ตัวอย่าง: SEG1 14 วินาที = 336 เฟรม, SEG2 13 วินาที = 312 เฟรม). 1 เรื่อง = 1 job ที่ต่อทุก segment
 5. **ออกแบบ shot** เป็นตาราง (shot / เวลา / ขนาดภาพ / action / เสียง) แล้ว **ตรวจ logic ของ motion** (หัวข้อ 3) ก่อนเขียน prompt
 6. เขียน `H3_SEG<N>_prompt.txt` (ไม่มี header; ขึ้นต้น `subject_definitions:`) + `H3_PLAN.md` ของเรื่อง (รูปที่ใช้, ตารางตรวจบท, แบ่ง segment, shot/logic, การตัดสินใจ/ความเสี่ยง) → ให้ผู้ใช้ตรวจก่อนสั่งเรนเดอร์
-7. ส่ง prompt เข้า Supabase (`supabase_prompts.mjs --push` ดู `ugc-render-ops`) เมื่อผู้ใช้อนุมัติ
+7. บันทึก prompt เป็นไฟล์ (`H3_SEG<N>_prompt.txt`) แล้วสอนผู้ใช้วางใน workflow ตาม `docs/USE_WORKFLOW.md`
 
 ### เขียนหลายเรื่องพร้อมกัน — ตัวสร้าง prompt จาก spec
-`comfyui-runpod-batch/scripts/gen_ugc_prompts.mjs` สร้าง `H3_SEG<N>_prompt.txt` + `H3_PLAN.md` + `story.meta.json` จากไฟล์ spec (ตัวอย่าง: `templates/story_specs.example.mjs`): กำหนดต่อ segment แค่ `hands` (ของในมือ), `sum`, `cont/contLead` (สถานะต่อเนื่อง) และ beats `B(size, action, tone, ไทย, หลังพูด, lead, hold)` ตัวสร้างคำนวณ timestamp/ความยาว/เฟรม (≤15 วินาที, ~3.2 คำ ICU/วินาที — ประมาณ ปรับตามผลจริง), ใส่ผิว/แสง/ฉาก, และ **ล้มถ้ามีคำ no/not/without/never/dewy/glow/flawless ในส่วนอังกฤษ**
+`scripts/gen_ugc_prompts.mjs` (ในโฟลเดอร์ skill นี้) สร้าง `H3_SEG<N>_prompt.txt` + `H3_PLAN.md` + `story.meta.json` จากไฟล์ spec (ตัวอย่าง: `templates/story_specs.example.mjs`): กำหนดต่อ segment แค่ `hands` (ของในมือ), `sum`, `cont/contLead` (สถานะต่อเนื่อง) และ beats `B(size, action, tone, ไทย, หลังพูด, lead, hold)` ตัวสร้างคำนวณ timestamp/ความยาว/เฟรม (≤15 วินาที, ~3.2 คำ ICU/วินาที — ประมาณ ปรับตามผลจริง), ใส่ผิว/แสง/ฉาก, และ **ล้มถ้ามีคำ no/not/without/never/dewy/glow/flawless ในส่วนอังกฤษ**
 - `--check` = ตรวจ/คำนวณโดยไม่เขียนไฟล์ · ไม่เขียนทับไฟล์ที่มีอยู่ (ยกเว้น `--force`) · segment ที่เขียนมือไว้แล้วให้ใช้ `segOffset` + `prefixFrames`
 - ฉาก: กำหนดใน spec ด้วย `bg:'in'` / `bg:'out'` (ห้อง/กลางแจ้ง) แต่ละฉากมีคำบรรยาย `desc/light/snd` ของตัวเอง
 - ตัวสร้างเตือนถ้ารวมยาวเกิน 15 วินาทีต่อ segment และไม่เขียนทับไฟล์เดิมถ้าไม่ใส่ `--force`

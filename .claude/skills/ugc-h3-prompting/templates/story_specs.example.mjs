@@ -1,5 +1,5 @@
 // ตัวอย่าง spec สำหรับ gen_ugc_prompts.mjs — คลิปนั่งพูดหน้ากล้อง 2 segment (แก้เป็นของคุณ)
-//   node ../../comfyui-runpod-batch/scripts/gen_ugc_prompts.mjs --spec story_specs.example.mjs --out ./out --check
+//   node ../scripts/gen_ugc_prompts.mjs --spec story_specs.example.mjs --out ./out --check
 // B(size 'MCU'|'CU', action ก่อนพูด (อังกฤษ), tone, บทไทย หรือ [ท่อน1, ท่อน2], ประโยคหลังพูด, lead วินาที, hold วินาที, tone ท่อน2)
 const B = (size, a, tone, d, z = '', lead = 0.4, hold = 0.3, t2 = '') => ({ size, a, tone, d, z, lead, hold, t2 });
 
