@@ -1,0 +1,37 @@
+PROMPT TEMPLATE — Ghost-hunt vlog found-footage (2 x 12 s) — segment 2 (context)
+STATUS: experimental (written but NOT rendered/verified yet — treat as a starting point and report results)
+WORKFLOW: MiniMax H3 (Singularity ref2va) via ComfyUI Easy-Media "Motion Context V2". Settings that worked: 8 steps, 1.0 MP, sampling_mode single. 24 fps. Segment length = length of your reference clip (frames x MP <= ~540 per segment). Segment length 12 s = 288 frames; segment 2 continuity "context".
+VARIABLES: {{HERO_DESCRIPTION}}, {{HERO_OUTFIT}}, {{GH_LINE_4..5}} as <d>[Thai] ...</d>
+NOTES:
+- Single continuous handheld take with beat time ranges (not several cut shots) — the Longprompt-writer style; untested here against the multi-shot style.
+- Segment 2 is a context segment: timestamps are written +0.92 s (5.917 lands at 5.0).
+- Joins should happen mid-action, never on a doorway or threshold.
+- A black frame with sound is hard for video models; if the light does not go dark, change it to a flicker.
+- Keep the scare mild (no gore). Check platform rules for horror content.
+- Do not feed a character sheet with a headless mannequin panel as Picture 1: crop the face panel only.
+
+HOW TO USE: copy ONLY the text between the PROMPT START / PROMPT END lines, replace every {{VARIABLE}}, and paste it as the segment's user_prompt.
+Copy from the raw file (not from a rendered web page): angle-bracket tags like <Picture 1> and <Video 1> disappear when copied from rendered markdown.
+
+=== PROMPT START ===
+subject_definitions:
+<Picture 1> {{HERO_DESCRIPTION}} exactly as shown in <Picture 1>, wearing {{HERO_OUTFIT}}. She is holding her phone out in front of her at arm's length to film herself, so the camera is the phone itself.
+
+summary:
+[reference generation] The same continuous scene, continuing seamlessly: she finishes turning to look behind her, finds the far door closed again, turns back to the lens with a shaky relieved laugh and says it must be the wind, then says they will go on; the phone light cuts out, a soft knock sounds in the dark, the light flicks back on and she gasps, frozen, as a faint pale silhouette stands far behind her. <Picture 1> defines her identity, skin and outfit.
+
+retention_analysis:
+<Picture 1> (appears throughout): fully_preserved - identity, facial features, hair and outfit retained.
+
+detailed_description:
+Ordinary handheld smartphone footage, vertical 9:16, a single continuous front-camera selfie take, chest-up framing at her eye level with gentle natural hand shake. The video opens already in progress, at the same pace, with the camera exactly where it already is, the same harsh white phone-torch light from the camera side and the same dark surroundings behind her.
+00:00.000-00:05.917: For the first 1.0 seconds her head finishes turning as she looks over her shoulder at the dark behind her, then she turns back to the lens, lets out a shaky relieved breath and a small nervous laugh, her shoulders dropping. She whispers at a trembling but hopeful pace, {{GH_LINE_4}} and the phone light flickers once.
+00:05.917-00:12.000: She forces a brave smile and whispers at a quiet, determined pace, {{GH_LINE_5}} At about 00:07.500 the phone light cuts out and the frame goes almost completely dark for about one second, lit only by a faint blue glow of night. A soft knock sounds in the dark. The light flicks back on and she gasps, her eyes wide and her mouth open, frozen still, while far behind her a faint pale silhouette stands quietly in the doorway for the last second, until the clip ends.
+
+overall_soundscape:
+Her shaky breathing and short nervous laugh close to the phone microphone, a faint electric flicker as the light dies and returns, one soft knock in the dark, her sharp gasp, a held silence and a low distant hum of the night.
+
+non_diegetic_music:
+N/A
+
+=== PROMPT END ===

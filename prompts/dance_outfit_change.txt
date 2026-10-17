@@ -1,0 +1,33 @@
+PROMPT TEMPLATE — Dance with a gradual outfit change at 3 s (1.5 s morph)
+STATUS: experimental (written but NOT rendered/verified yet — treat as a starting point and report results)
+WORKFLOW: MiniMax H3 (Singularity ref2va) via ComfyUI Easy-Media "Motion Context V2". Settings that worked: 8 steps, 1.0 MP, sampling_mode single. 24 fps. Segment length = length of your reference clip (frames x MP <= ~540 per segment).
+VARIABLES: {{NEW_OUTFIT}} e.g. "a tailored black suit: a black jacket over a crisp white shirt with a slim black tie and black trousers"; plus the dance variables
+NOTES:
+- Timestamps inside a pose-driven clip may disturb the dance (observed with face timelines). If the dance drifts, use the safer method: render the clip twice with identical settings/seed/<Video 1>, only Picture 1 + outfit text different, then blend in an editor, e.g. ffmpeg xfade (transition=circleopen:duration=0.6:offset=<seconds>).
+- The model may cross-fade the outfits instead of morphing the fabric.
+
+HOW TO USE: copy ONLY the text between the PROMPT START / PROMPT END lines, replace every {{VARIABLE}}, and paste it as the segment's user_prompt.
+Copy from the raw file (not from a rendered web page): angle-bracket tags like <Picture 1> and <Video 1> disappear when copied from rendered markdown.
+
+=== PROMPT START ===
+subject_definitions:
+<Picture 1> {{SUBJECT}}, {{HER_HIS}} face, hairstyle and skin exactly as shown in <Picture 1>, wearing the outfit shown in <Picture 1> at the start of the clip.
+
+summary:
+[reference generation] The {{WHO}} from <Picture 1> performs the same dance as shown in <Video 1>, matching its choreography, movement and rhythm, with the same energy and timing. <Picture 1> defines {{HER_HIS}} identity and outfit.
+
+retention_analysis:
+<Picture 1> (appears in [Shot 1]): fully_preserved - identity, facial features, hairstyle and outfit retained throughout.
+<Video 1> (appears in [Shot 1]): motion_reference - the dance choreography, body movement and timing are followed.
+
+detailed_description:
+Vertical 9:16 smartphone footage, camera fixed on a tripod at chest height, the frame is the same as <Video 1>, even soft front light, fine natural camera grain.
+[Shot 1] The {{WHO}} from <Picture 1> dances the same choreography as <Video 1>, moving {{HER_HIS}} arms, hips and feet in the same order and at the same tempo, {{HER_HIS}} hair and clothes swaying naturally with the movement. From 00:03.000 to 00:04.500 {{HER_HIS}} outfit changes slowly and smoothly in place: starting at the shoulders and spreading downward, the clothes {{SHE_HE}} is wearing gradually morph into {{NEW_OUTFIT}}, and by 00:04.500 the transformation is complete. Throughout the change the camera, the background, {{HER_HIS}} body position and the dance carry on exactly as before. {{SHE_HE}} is a silent dancer: {{HER_HIS}} mouth stays quiet and {{HER_HIS}} lips rest softly closed, with a cool, composed expression.
+
+overall_soundscape:
+Soft room tone and the gentle rustle of clothing, with one soft slow fabric swish as the new outfit takes shape.
+
+non_diegetic_music:
+N/A
+
+=== PROMPT END ===

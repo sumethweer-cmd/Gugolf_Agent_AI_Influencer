@@ -1,0 +1,39 @@
+PROMPT TEMPLATE — Product UGC (2 x 12 s) — segment 2: presenter holds the product
+STATUS: experimental (written but NOT rendered/verified yet — treat as a starting point and report results)
+WORKFLOW: MiniMax H3 (Singularity ref2va) via ComfyUI Easy-Media "Motion Context V2". Settings that worked: 8 steps, 1.0 MP, sampling_mode single. 24 fps. Segment length = length of your reference clip (frames x MP <= ~540 per segment). Segment length 12 s = 288 frames.
+VARIABLES: {{PRESENTER}}, {{PRESENTER_DESCRIPTION}}, {{PRODUCT_DESCRIPTION}}, {{LINE_4..6}} as <d>[Thai] ...</d>, {{T_SHOT2B}} start of shot 2 (e.g. 00:07.125)
+NOTES:
+- This is a "continuity shot" segment-2 design: the join is a real hard cut (product shot -> presenter holding product), so segment 2 is NOT a context continuation and repeats the reference pictures.
+- Product: crop the product picture so only the product is visible (no hands, watermarks, price tags or captions): anything in Picture 2 can leak into the video.
+- Small label text often comes out garbled; keep only the main name in the prompt and add real text in the edit.
+- Do not invent price, stock, or health/benefit claims. Subjective scent/feel descriptions must match the real product. Add the required ad / sponsorship disclosure in the edit.
+
+HOW TO USE: copy ONLY the text between the PROMPT START / PROMPT END lines, replace every {{VARIABLE}}, and paste it as the segment's user_prompt.
+Copy from the raw file (not from a rendered web page): angle-bracket tags like <Picture 1> and <Video 1> disappear when copied from rendered markdown.
+
+=== PROMPT START ===
+subject_definitions:
+<Picture 1> {{PRESENTER}} - {{PRESENTER_DESCRIPTION}} exactly as shown in <Picture 1>. Her skin shows natural matte texture with visible pores and slight unevenness. She is the woman sitting upright on the sofa in the living room and talking directly to the camera across multiple cuts, holding the product from <Picture 2> in her right hand at chest height with its label turned toward the lens while her left hand stays free.
+<Picture 2> is {{PRODUCT_DESCRIPTION}}.
+<Picture 3> is the living room, visible as the background throughout the scene.
+
+summary:
+[reference generation] {{PRESENTER}} holds the product up in the living room, gives the key facts, reminds the viewer to check before buying, and invites them to ask about it. <Picture 1> defines her identity, skin and outfit; <Picture 2> defines the product; <Picture 3> defines the living room.
+
+retention_analysis:
+<Picture 1> (appears in [Shot 1]-[Shot 2]): fully_preserved - identity, facial features, hairstyle, skin texture and outfit retained.
+<Picture 2> (appears in [Shot 1]-[Shot 2]): fully_preserved - product shape and label retained.
+<Picture 3> (appears in [Shot 1]-[Shot 2]): fully_preserved - the living room retained as the background throughout.
+
+detailed_description:
+Ordinary smartphone footage, vertical 9:16, recorded by a front camera propped at seated eye level facing her straight on in the living room from <Picture 3>; the camera stays perfectly still and only she moves. Every cut changes only the shot size, between a medium close-up and a close-up, with the same angle and the same background. Soft daylight from the window side, widened by a soft fill from the camera side, fine natural camera grain.
+[Shot 1] A medium close-up. {{PRESENTER}} holds the product in her right hand at chest height, its label turned toward the lens, her left hand free, a warm bright look on her face. She says at a friendly, easy pace, {{LINE_4}} then tips the product slightly toward the lens, and continues at a calm, honest pace, {{LINE_5}}
+[Shot 2] At {{T_SHOT2B}}, the camera cuts to a close-up. {{PRESENTER}} tilts her head a little toward the lens with a warm, inviting smile. She says at an easy, friendly pace, {{LINE_6}} then ends with a small satisfied smile, holding about 0.8 seconds until the clip ends.
+
+overall_soundscape:
+Quiet living-room tone with a faint distant hum and soft fabric rustle as she moves.
+
+non_diegetic_music:
+N/A
+
+=== PROMPT END ===

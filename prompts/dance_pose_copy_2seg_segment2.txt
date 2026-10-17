@@ -1,0 +1,33 @@
+PROMPT TEMPLATE — Dance copy, long reference — segment 2 of 2 (context)
+STATUS: experimental
+WORKFLOW: MiniMax H3 (Singularity ref2va) via ComfyUI Easy-Media "Motion Context V2". Settings that worked: 8 steps, 1.0 MP, sampling_mode single. 24 fps. Segment length = length of your reference clip (frames x MP <= ~540 per segment). Both segments reference <Video 1> (the node splits a long reference video into task segments itself — do not pre-cut the clip). Segment 1 = continuity "shot", segment 2 = "context".
+VARIABLES: same as dance_pose_copy_B_silent.txt
+NOTES:
+- Opens with a continuation block: same pace, same camera, same light, no scenery nouns.
+- Context segments: timestamps (if you ever use any) land ~0.92 s early in the final video; write T + 0.92 to land at T. This template uses none.
+
+HOW TO USE: copy ONLY the text between the PROMPT START / PROMPT END lines, replace every {{VARIABLE}}, and paste it as the segment's user_prompt.
+Copy from the raw file (not from a rendered web page): angle-bracket tags like <Picture 1> and <Video 1> disappear when copied from rendered markdown.
+
+=== PROMPT START ===
+subject_definitions:
+<Picture 1> {{SUBJECT}}, {{HER_HIS}} face, hairstyle, skin and outfit exactly as shown in <Picture 1>.
+
+summary:
+[reference generation] The same continuous scene, continuing seamlessly: the {{WHO}} from <Picture 1> keeps dancing, now performing the next part of the dance shown in <Video 1>, matching its choreography, movement and rhythm, with the same energy and timing, from the first beat to the last. <Picture 1> defines {{HER_HIS}} identity and outfit.
+
+retention_analysis:
+<Picture 1> (appears in [Shot 1]): fully_preserved - identity, facial features, hairstyle and outfit retained throughout.
+<Video 1> (appears in [Shot 1]): motion_reference - only the dance choreography, body movement and timing of this part are followed for the whole length of the clip.
+
+detailed_description:
+Vertical 9:16 smartphone footage, camera fixed on a tripod at chest height, the frame is the same as <Video 1>, even soft front light, fine natural camera grain.
+[Shot 1] The video opens already in progress, at the same pace, with the camera exactly where it already is and the {{WHO}} in exactly the same position and mid-movement, {{HER_HIS}} dance carrying on without a pause. The {{WHO}} from <Picture 1> dances the same choreography as <Video 1>, moving {{HER_HIS}} arms, hips and feet in the same order and at the same tempo, {{HER_HIS}} hair and clothes swaying naturally with the movement, until the clip ends. She is a silent dancer: {{HER_HIS}} mouth stays quiet and {{HER_HIS}} lips rest softly closed or just slightly parted. {{HER_HIS}} face is coy, flirty and playful the whole way through: {{HER_HIS}} half-lidded eyes keep finding the lens with a teasing, confident gaze, and now and then one eye squeezes into a cheeky squint. {{HER_HIS}} eyebrows lift lightly on the accents of the dance, {{HER_HIS}} closed lips curl into a tiny knowing smile, and {{HER_HIS}} eyes curve into happy crescents with a soft silent laugh that lifts {{HER_HIS}} cheeks. {{HER_HIS}} glance drifts down and lifts back to the lens through {{HER_HIS}} bangs, and {{SHE_HE}} ends the dance with a shy, bright smile.
+
+overall_soundscape:
+Soft room tone and the gentle rustle of clothing as {{SHE_HE}} moves.
+
+non_diegetic_music:
+N/A
+
+=== PROMPT END ===

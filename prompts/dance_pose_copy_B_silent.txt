@@ -1,0 +1,35 @@
+PROMPT TEMPLATE — Dance copy (DWPose) — silent dancer, richer face prose, single segment
+STATUS: verified (tested by the author: followed the reference dance very well) — rated about the same as A ("11/10") by the author
+WORKFLOW: MiniMax H3 (Singularity ref2va) via ComfyUI Easy-Media "Motion Context V2". Settings that worked: 8 steps, 1.0 MP, sampling_mode single. 24 fps. Segment length = length of your reference clip (frames x MP <= ~540 per segment).
+VARIABLES: {{SUBJECT}}, {{WHO}} "woman", {{HER_HIS}} "her"/"his", {{SHE_HE}} "she"/"he"
+NOTES:
+- Use B when you want the mouth closed (no singing). Same rules as A: no timestamps, one shot, face as prose.
+- Side-by-side result: mouthing variant keeps the mouth open (sing-along look); silent variant gives closed-mouth smiles and a sweeter look. Pick by the look you want.
+- For a cool poker face (no smile) replace the face paragraph with: "a cool, composed poker face: mouth quiet, lips softly closed, jaw relaxed, a steady slightly narrowed gaze on the lens, face smooth and unmoving while the body does all the dancing".
+- If the character wears sunglasses/covers the eyes, drop the gaze sentences and describe mouth, cheeks, ears instead.
+
+HOW TO USE: copy ONLY the text between the PROMPT START / PROMPT END lines, replace every {{VARIABLE}}, and paste it as the segment's user_prompt.
+Copy from the raw file (not from a rendered web page): angle-bracket tags like <Picture 1> and <Video 1> disappear when copied from rendered markdown.
+
+=== PROMPT START ===
+subject_definitions:
+<Picture 1> {{SUBJECT}}, {{HER_HIS}} face, hairstyle, skin and outfit exactly as shown in <Picture 1>.
+
+summary:
+[reference generation] The {{WHO}} from <Picture 1> performs the same dance as shown in <Video 1>, matching its choreography, movement and rhythm, with the same energy and timing, from the first beat to the last. <Picture 1> defines {{HER_HIS}} identity and outfit.
+
+retention_analysis:
+<Picture 1> (appears in [Shot 1]): fully_preserved - identity, facial features, hairstyle and outfit retained throughout.
+<Video 1> (appears in [Shot 1]): motion_reference - only the dance choreography, body movement and timing are followed for the whole length of the clip.
+
+detailed_description:
+Vertical 9:16 smartphone footage, camera fixed on a tripod at chest height, the frame is the same as <Video 1>, even soft front light, fine natural camera grain.
+[Shot 1] The {{WHO}} from <Picture 1> dances the same choreography as <Video 1>, moving {{HER_HIS}} arms, hips and feet in the same order and at the same tempo, {{HER_HIS}} hair and clothes swaying naturally with the movement, until the clip ends. She is a silent dancer: {{HER_HIS}} mouth stays quiet and {{HER_HIS}} lips rest softly closed or just slightly parted. {{HER_HIS}} face is coy, flirty and playful the whole way through: {{HER_HIS}} half-lidded eyes keep finding the lens with a teasing, confident gaze, and now and then one eye squeezes into a cheeky squint. {{HER_HIS}} eyebrows lift lightly on the accents of the dance, {{HER_HIS}} closed lips curl into a tiny knowing smile, and {{HER_HIS}} eyes curve into happy crescents with a soft silent laugh that lifts {{HER_HIS}} cheeks. {{HER_HIS}} glance drifts down and lifts back to the lens through {{HER_HIS}} bangs, and {{SHE_HE}} ends the dance with a shy, bright smile.
+
+overall_soundscape:
+Soft room tone and the gentle rustle of clothing as {{SHE_HE}} moves.
+
+non_diegetic_music:
+N/A
+
+=== PROMPT END ===

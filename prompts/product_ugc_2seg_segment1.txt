@@ -1,0 +1,39 @@
+PROMPT TEMPLATE — Product UGC (2 x 12 s) — segment 1: presenter hook + product-only shot
+STATUS: experimental (written but NOT rendered/verified yet — treat as a starting point and report results)
+WORKFLOW: MiniMax H3 (Singularity ref2va) via ComfyUI Easy-Media "Motion Context V2". Settings that worked: 8 steps, 1.0 MP, sampling_mode single. 24 fps. Segment length = length of your reference clip (frames x MP <= ~540 per segment). Segment length 12 s = 288 frames.
+VARIABLES: {{PRESENTER}}, {{PRESENTER_DESCRIPTION}}, {{PRODUCT_DESCRIPTION}}, {{HOOK_TOPIC}}, {{LINE_1..3}} as <d>[Thai] ...</d>, {{T_SHOT2}} start time of shot 2 (e.g. 00:06.292)
+NOTES:
+- This is a "continuity shot" segment-2 design: the join is a real hard cut (product shot -> presenter holding product), so segment 2 is NOT a context continuation and repeats the reference pictures.
+- Product: crop the product picture so only the product is visible (no hands, watermarks, price tags or captions): anything in Picture 2 can leak into the video.
+- Small label text often comes out garbled; keep only the main name in the prompt and add real text in the edit.
+- Do not invent price, stock, or health/benefit claims. Subjective scent/feel descriptions must match the real product. Add the required ad / sponsorship disclosure in the edit.
+
+HOW TO USE: copy ONLY the text between the PROMPT START / PROMPT END lines, replace every {{VARIABLE}}, and paste it as the segment's user_prompt.
+Copy from the raw file (not from a rendered web page): angle-bracket tags like <Picture 1> and <Video 1> disappear when copied from rendered markdown.
+
+=== PROMPT START ===
+subject_definitions:
+<Picture 1> {{PRESENTER}} - {{PRESENTER_DESCRIPTION}} exactly as shown in <Picture 1>. Her skin shows natural matte texture with visible pores and slight unevenness. She is the woman sitting upright on the sofa in the living room and talking directly to the camera.
+<Picture 2> is {{PRODUCT_DESCRIPTION}}.
+<Picture 3> is the living room, visible as the background throughout the scene, with the sofa where she sits and the low table beside it.
+
+summary:
+[reference generation] {{PRESENTER}} sits on the sofa with empty hands and tells the viewer in a bright way about {{HOOK_TOPIC}}; then the product is shown on its own on the low table while her voice, off-screen, describes it. <Picture 1> defines her identity, skin and outfit; <Picture 2> defines the product; <Picture 3> defines the living room.
+
+retention_analysis:
+<Picture 1> (appears in [Shot 1]): fully_preserved - identity, facial features, hairstyle, skin texture and outfit retained; absent from [Shot 2].
+<Picture 2> (appears in [Shot 2]): fully_preserved - product shape, materials and label retained; absent from [Shot 1].
+<Picture 3> (appears in [Shot 1]-[Shot 2]): fully_preserved - the living room retained as the background throughout.
+
+detailed_description:
+Ordinary smartphone footage of a product recommendation, vertical 9:16, in the living room from <Picture 3>. Soft daylight from the window side widened by a soft fill from the camera side, neutral natural white balance, fine natural camera grain. The shot with {{PRESENTER}} is recorded by a front camera propped at seated eye level facing her straight on; the camera stays perfectly still and only she moves.
+[Shot 1] A medium close-up. {{PRESENTER}} sits upright on the sofa with both hands empty, resting loosely in her lap, the low table beside her clear. She looks straight into the lens with a bright, friendly look. She says at a bright, excited pace, {{LINE_1}} then continues at a soft, easy pace, {{LINE_2}}
+[Shot 2] At {{T_SHOT2}}, the camera cuts to a medium close-up of the product from <Picture 2> standing alone on the low table in the living room, its label turned straight toward the lens, {{PRESENTER}} out of frame. The camera is propped still at table height and pushes in very slowly. Soft daylight slides across the product, giving it gentle highlights, while the label stays sharp and steady in the center. {{PRESENTER}}'s voice, off-screen, says at a soft, relaxed pace, {{LINE_3}} and the shot settles steady on the product for about 0.9 seconds until the clip ends.
+
+overall_soundscape:
+Quiet living-room tone with a faint distant hum, soft fabric rustle as she moves in [Shot 1], and a faint soft glint of light on the product in [Shot 2].
+
+non_diegetic_music:
+N/A
+
+=== PROMPT END ===

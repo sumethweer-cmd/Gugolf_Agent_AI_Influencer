@@ -1,0 +1,26 @@
+# ความลับ — ห้าม commit
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+secrets/
+
+# ledger / ผลลัพธ์ / ไฟล์สื่อ (ไม่เก็บในรีโป)
+rh_tasks.json
+*_outputs/
+rp_outputs/
+rh_outputs/
+outputs/
+*.mp4
+*.mov
+*.webm
+*.wav
+*.mp3
+*.safetensors
+
+# อื่นๆ
+node_modules/
+.DS_Store
+Thumbs.db
+*.bak.mjs

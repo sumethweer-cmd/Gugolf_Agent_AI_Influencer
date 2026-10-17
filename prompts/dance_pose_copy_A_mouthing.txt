@@ -1,0 +1,35 @@
+PROMPT TEMPLATE — Dance copy (DWPose) — lips mouthing the song, single segment
+STATUS: verified (tested by the author: followed the reference dance very well) — rated 10/10 by the author
+WORKFLOW: MiniMax H3 (Singularity ref2va) via ComfyUI Easy-Media "Motion Context V2". Settings that worked: 8 steps, 1.0 MP, sampling_mode single. 24 fps. Segment length = length of your reference clip (frames x MP <= ~540 per segment).
+VARIABLES: {{SUBJECT}} e.g. "a young woman"; {{WHO}} "woman"; {{HER_HIS}} "her"/"his"
+NOTES:
+- NO timestamps anywhere: a timestamped face timeline made the dance drift away from the pose reference.
+- ONE [Shot 1] only. Face = prose, observable actions (eyes, gaze, brows, mouth, smile arc).
+- Never write "same expression as <Video 1>": the reference video is for body motion only.
+- The mouth is stated explicitly; leaving it unspecified made the model sing invented lyrics.
+
+HOW TO USE: copy ONLY the text between the PROMPT START / PROMPT END lines, replace every {{VARIABLE}}, and paste it as the segment's user_prompt.
+Copy from the raw file (not from a rendered web page): angle-bracket tags like <Picture 1> and <Video 1> disappear when copied from rendered markdown.
+
+=== PROMPT START ===
+subject_definitions:
+<Picture 1> {{SUBJECT}}, {{HER_HIS}} face, hairstyle, skin and outfit exactly as shown in <Picture 1>.
+
+summary:
+[reference generation] The {{WHO}} from <Picture 1> performs the same dance as shown in <Video 1>, matching its choreography, movement and rhythm, with the same energy and timing. <Picture 1> defines {{HER_HIS}} identity and outfit.
+
+retention_analysis:
+<Picture 1> (appears in [Shot 1]): fully_preserved - identity, facial features, hairstyle and outfit retained throughout.
+<Video 1> (appears in [Shot 1]): motion_reference - the dance choreography, body movement and timing are followed.
+
+detailed_description:
+Vertical 9:16 smartphone footage, camera fixed on a tripod at chest height, the frame is the same as <Video 1>, even soft front light, fine natural camera grain.
+[Shot 1] The {{WHO}} from <Picture 1> dances the same choreography as <Video 1>, moving {{HER_HIS}} arms, hips and feet in the same order and at the same tempo, {{HER_HIS}} hair and clothes swaying naturally with the movement. Throughout the dance {{HER_HIS}} face is coy and playful: soft half-lidded eyes that keep returning to the lens, lips lightly parted and silently mouthing along to the song, a sweet teasing half-smile that now and then breaks into a closed-eye smile, and a shy, wide smile as the clip ends.
+
+overall_soundscape:
+N/A
+
+non_diegetic_music:
+N/A
+
+=== PROMPT END ===
