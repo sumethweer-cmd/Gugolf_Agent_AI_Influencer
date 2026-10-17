@@ -85,4 +85,4 @@ description: สั่งงาน ComfyUI ที่รันบน RunPod (ห�
   `node runninghub_run.mjs --config a.json,b.json,c.json --go --nowait`  (ไม่ใส่ --go = dry-run)
 - เช็กสถานะแบบสั้น (ไม่กินโทเคน): `node runninghub_run.mjs --status` · เก็บผล: `--collect` (ลง rh_outputs/ + บันทึก run วินาที/coins ใน ledger `rh_tasks.json`)
 - ส่งงาน (`--go`) ต้องได้รับการยืนยันจากผู้ใช้ทุกครั้ง (ใช้ coins)
-- config ต่อเรื่อง: `rh.<story>.config.json` (รูป Picture 1/2, segments: prompt + frames, projectName ไม่ซ้ำ) ตัวอย่างอยู่ใน `UGC/Weekly/…/01_Gray_Hair/`
+- config ต่อเรื่อง: `rh.<story>.config.json` (รูป Picture 1/2, segments: prompt + frames, projectName ไม่ซ้ำ) ตัวอย่างอยู่ใน `.claude/skills/ugc-render-ops/templates/`
