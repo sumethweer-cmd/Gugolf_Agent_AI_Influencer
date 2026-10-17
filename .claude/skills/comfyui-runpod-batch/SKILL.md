@@ -80,7 +80,7 @@ description: สั่งงาน ComfyUI ที่รันบน RunPod (ห�
 
 ## RunningHub (ทางเลือกที่ถูกกว่าสำหรับงาน UGC) — `scripts/runninghub_run.mjs`
 ยืนยันแล้ว (2026-10-13): upload → create(nodeInfoList: โหนด 29 `track_data`, โหนด 15 `project_name`/`seed`) → status → outputs(`fileUrl`, `taskCostTime`, `consumeCoins`) ใช้ได้จริง; คิดเงินเฉพาะเวลารัน (เวลารอคิวไม่คิด); ไม่มี pod ให้ปิด
-- key/workflowId อยู่ใน `UGC/.env` (RUNNINGHUB_API_KEY, RUNNINGHUB_WORKFLOW_ID) — **ห้ามเปิดอ่าน/พิมพ์ค่า** สคริปต์อ่านเอง; .env ห้ามเข้า git
+- key/workflowId อยู่ใน `.env` ที่รากโปรเจกต์ (RUNNINGHUB_API_KEY, RUNNINGHUB_WORKFLOW_ID) — **ห้ามเปิดอ่าน/พิมพ์ค่า** สคริปต์อ่านเอง; .env ห้ามเข้า git
 - ส่งหลายเรื่องเข้าคิวทีเดียว (RH รันทีละงาน; API concurrency ของ Personal = 1):
   `node runninghub_run.mjs --config a.json,b.json,c.json --go --nowait`  (ไม่ใส่ --go = dry-run)
 - เช็กสถานะแบบสั้น (ไม่กินโทเคน): `node runninghub_run.mjs --status` · เก็บผล: `--collect` (ลง rh_outputs/ + บันทึก run วินาที/coins ใน ledger `rh_tasks.json`)
